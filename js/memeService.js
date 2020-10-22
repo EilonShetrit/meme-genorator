@@ -1,8 +1,5 @@
 'use strict'
 
-
-
-
 //---MODEL---//
 var gImgs = [{
     id: 1,
@@ -11,22 +8,112 @@ var gImgs = [{
 {
     id: 2,
     url: './meme-img/2.jpg'
+},
+{
+    id: 3,
+    url: './meme-img/3.jpg'
+},
+{
+    id: 4,
+    url: './meme-img/4.jpg'
+},
+{
+    id: 5,
+    url: './meme-img/5.jpg'
+},
+{
+    id: 6,
+    url: './meme-img/6.jpg'
+},
+{
+    id: 7,
+    url: './meme-img/7.jpg'
+},
+{
+    id: 8,
+    url: './meme-img/8.jpg'
+},
+{
+    id: 9,
+    url: './meme-img/9.jpg'
+},
+{
+    id: 10,
+    url: './meme-img/10.jpg'
+},
+{
+    id: 11,
+    url: './meme-img/11.jpg'
+},
+{
+    id: 12,
+    url: './meme-img/12.jpg'
+},
+{
+    id: 13,
+    url: './meme-img/13.jpg'
+},
+{
+    id: 14,
+    url: './meme-img/14.jpg'
+},
+{
+    id: 15,
+    url: './meme-img/15.jpg'
+},
+{
+    id: 16,
+    url: './meme-img/16.jpg'
+},
+{
+    id: 17,
+    url: './meme-img/17.jpg'
+},
+{
+    id: 18,
+    url: './meme-img/18.jpg'
 }];
 
 var gMeme = {
     selectedImgId: 1,
     selectedLineIdx: 0,
-    lines: {
+    lines: [{
         txt: 'write your text here',
         size: 30,
         align: 'center',
         color: 'white',
-        font: 'Impact'
-    }
+        font: 'Impact',
+        x: 120,
+        y: 50
+    },
+    {
+        txt: 'write your text here',
+        size: 30,
+        align: 'center',
+        color: 'white',
+        font: 'Impact',
+        x: 120,
+        y: 420
+    }]
 }
 
+function setCurrLineIdx(){
+gMeme.selectedLineIdx = (gMeme.selectedLineIdx<gMeme.lines.length-1)? gMeme.selectedLineIdx+1 : 0;
+}
 function changeTxt(txt){
-    gMeme.lines.txt = txt;
+gMeme.lines[gMeme.selectedLineIdx].txt = txt;
+}
+function increaseFont(){
+gMeme.lines[gMeme.selectedLineIdx].size++;
+}
+function decreaseFont(){
+gMeme.lines[gMeme.selectedLineIdx].size--;
+}
+function moveTxtUp(){
+gMeme.lines[gMeme.selectedLineIdx].y--;
+}
+function moveTxtDown(){
+gMeme.lines[gMeme.selectedLineIdx].y++;
 }
 function selectImg(imgId) {
     gMeme.selectedImgId = imgId;

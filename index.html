@@ -1,11 +1,13 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Meme genorator</title>
     <link rel="stylesheet" href="css/main.css">
 </head>
+
 <body onload="onInit()">
     <header class="main-header">
         <div class="header-content">
@@ -16,35 +18,77 @@
             </div>
         </div>
     </header>
-    <div class="imgs-container grid"></div>
-    <!-- <div class="about">
-        <ul class="nav-social flex clean-list">
-            <li class="icon-facebook"><a href="#">
-                    <img src="img/icons/facebook.png">
-                </a></li>
-            <li class="icon-twitter"><a href="#">
-                    <img src="img/icons/twitter.png">
-                </a></li>
-            <li class="icon-behance"><a href="#">
-                    <img src="img/icons/behance.png">
-                </a></li>
-            <li class="icon-basketball"><a href="#">
-                    <img src="img/icons/basketball.png">
-                </a></li>
-        </ul>
-    </div> -->
-    <footer class="main-footer">
+    <div class="gallery-container grid"></div>
+    <div class="about flex" id="about">
+        <div class="team-member">
+            <img class="my-pic"  src="./my-img/me.PNG">
+        </div>
+        <div class="details">
+            <h4>Eilon Shetrit</h4>
+            <p class="about-me">Lead Marketer</p>
+            <ul class="social-media flex clean-list">
+                <li class="icon-facebook">
+                    <a href="https://www.facebook.com/eilon.shitrit.5/" target="_blank">
+                        <img src="./icons/facebook-logo.png">
+                    </a>
+                </li>
+                <li class="icon-linkedin">
+                    <a href="#about">
+                        <img src="./icons/linkedin-logo.png">
+                    </a>
+                </li>
+                <li class="icon-git">
+                    <a href="https://github.com/EilonShetrit/">
+                        <img src="./icons/github-logo.png">
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </div>
+    <div class="editor-container flex hide">
+        <div class="canvas-container">
+            <canvas id="my-canvas" height="450" width="450"></canvas>
+        </div>
+        <section class="editor-meme">
+            Text here: <input oninput="onChangeTxt(this.value)" type="text" id="meme-txt" name="meme-txt">
+            <button class="increase-font" onclick="onIncreaseFont()">
+                <img src="./icons/increase font - icon.png"></button>
+            <button class="decrease-font" onclick="onDecreaseFont()">
+                <img src="./icons/decrease font - icon.png"></button>
+            <button class="move-txt" onclick="onMoveTxtUp()">Up</button>
+            <button class="move-txt" onclick="onMoveTxtDown()">Down</button>
+            <button class="switch-line" onclick="onSwitchLine()">
+            <img src="./icons/up-and-down-opposite-double-arrows-side-by-side.png"></button>
+            <button class="switch-line" onclick="">
+            <img src="./icons/align-to-left.png"></button>
+            <button class="switch-line" onclick="">
+            <img src="./icons/center-text-alignment.png"></button>
+            <button class="switch-line" onclick="">
+                <img src="./icons/align-to-right.png"></button>
+            <button class="switch-line" onclick="">
+                <img src="./icons/paint-board-and-brush.png"></button>
+            <button class="switch-line" onclick="">
+                <img src="./icons/trash.png"></button>
+            <button class="switch-line" onclick="">
+                <img src="./icons/add.png"></button>
+            <button class="switch-line" onclick="">
+                <img src="./icons/text stroke.png"></button>
+            <button class="switch-line" onclick="">Share</button>
+            <button class="switch-line" onclick="">Download</button>
+            <select name="font-family" id="font-family">
+                <option value="volvo">Impact</option>
+                <option value="saab">Ariel</option>
+                <option value="opel">Monospace</option>
+                <!-- <option value="audi">AmongUs</option> -->
+            </select>
+        </section>
+    </div>
+    <footer class="main-footer align">
         <div class="logo"></div>
         <p class="copy-right"> This app created by Eilon Shetrit ©</p>
     </footer>
-    <div class="canvas-container" style="display:none;">
-        <form>
-            Text here: <input oninput="onChangeTxt(this.value)" type="text" id="meme-txt" name="meme-txt">
-        </form>
-        <canvas id="my-canvas" height="450" width="450"></canvas>
-    </div>
-    
     <script src="js/memeService.js"></script>
     <script src="js/memeController.js"></script>
 </body>
+
 </html>

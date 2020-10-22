@@ -1,3 +1,15 @@
+@font-face {
+    font-family: among-us;
+    src: url(/fonts/In_your_face\,\ joffrey!.ttf);
+  }
+  @font-face {
+    font-family: monoserrat-regular;
+    src: url(/fonts/Montserrat-Regular.ttf);
+  }
+  @font-face {
+    font-family: monoserrat-bold;
+    src: url(/fonts/Montserrat-Bold.ttf);
+  }
 * {
     box-sizing: border-box;
 }
@@ -6,7 +18,10 @@ body {
     margin: 0;
     height: 100vh;
 }
-
+h4{
+  font-size: 1.562rem;
+  font-family: monoserrat-bold , serif;
+}
 .main-header {
     width: 100%;
     height: 66px;
@@ -19,41 +34,86 @@ canvas {
     border: 1px solid black;
 }
 
-.canvas-container {
+.editor-container {
     background-color:#e3e3e3;
     width: 100vw;
-    height: 932px;
+    height: 650px;
     border: 1px solid red;
 }
 
-.imgs-container {
+.gallery-container {
     background-color:#e3e3e3;
-    display: block;
-
+    grid-template-columns: repeat(6 ,1fr);
+    grid-template-rows: repeat(3 ,1fr);
 }
-.imgs-container>* {
-    max-width: 353px;
-    max-height: 278px;
+.gallery-container>* {
+    max-width: 340px;
+    max-height: 260px;
     cursor: pointer;
+    object-fit: cover;
 }
 
+.editor-meme img{
+    width: 40px;
+    object-fit: cover;
+}
 
 /* HELPERS */
 
 .grid {
     display: grid;
     grid-gap: 10px;
-    padding: 10px;
+    padding: 20px;
+}
+.flex{
+    display: flex;
+}
+.hide{
+    display: none;
+}
+.clean-list{
+    list-style: none;
+}
+.align{
+    justify-content: center;
 }
 
 
-
-
-
-
-
-
-
+/* ABOUT */
+.about{
+height: 567px;
+}
+.about .my-pic{
+object-fit: cover;
+height: 332px;
+width: 332px;
+border-radius: 50%;
+margin:78px 0 0 155px;
+}
+.about .social-media img{
+width: 38px;
+height: 38px;
+}
+.about .social-media li{
+background-color: #ff7f00;
+border-radius: 10px;
+padding: 5px;
+}
+.about .social-media{
+padding-inline-start: 0;
+justify-content: space-between;
+}
+.about .details{
+  margin:196px 0 0 40px;
+  
+}
+.about .details h2{
+    margin-bottom: 0;
+}
+.about .details p{
+    font-family: monoserrat-regular , serif;
+    font-size: 1.25rem;
+}
 
 
 
@@ -62,6 +122,11 @@ canvas {
 width: 100%;
 height: 207px;
 background-color: #ff7f00;
-position: fixed;
-bottom: 0;
+}
+.main-footer{
+    margin: 0;
+}
+.main-footer .copy-right{
+    text-align: center;
+    margin-top: 77px;
 }
