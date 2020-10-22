@@ -1,0 +1,67 @@
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    height: 100vh;
+}
+
+.main-header {
+    width: 100%;
+    height: 66px;
+    background-color: #ff7f00;
+}
+
+canvas {
+    display: block;
+    margin: 20px auto;
+    border: 1px solid black;
+}
+
+.canvas-container {
+    background-color:#e3e3e3;
+    width: 100vw;
+    height: 932px;
+    border: 1px solid red;
+}
+
+.imgs-container {
+    background-color:#e3e3e3;
+    display: block;
+
+}
+.imgs-container>* {
+    max-width: 353px;
+    max-height: 278px;
+    cursor: pointer;
+}
+
+
+/* HELPERS */
+
+.grid {
+    display: grid;
+    grid-gap: 10px;
+    padding: 10px;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+/* FOOTER */
+.main-footer {
+width: 100%;
+height: 207px;
+background-color: #ff7f00;
+position: fixed;
+bottom: 0;
+}

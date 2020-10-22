@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Meme genorator</title>
+    <link rel="stylesheet" href="css/main.css">
+</head>
+<body onload="onInit()">
+    <header class="main-header">
+        <div class="header-content">
+            <div class="logo"></div>
+            <div class="nav-btn">
+                <a href="">Gallery</a>
+                <a href="">About</a>
+            </div>
+        </div>
+    </header>
+    <div class="imgs-container grid"></div>
+    <!-- <div class="about">
+        <ul class="nav-social flex clean-list">
+            <li class="icon-facebook"><a href="#">
+                    <img src="img/icons/facebook.png">
+                </a></li>
+            <li class="icon-twitter"><a href="#">
+                    <img src="img/icons/twitter.png">
+                </a></li>
+            <li class="icon-behance"><a href="#">
+                    <img src="img/icons/behance.png">
+                </a></li>
+            <li class="icon-basketball"><a href="#">
+                    <img src="img/icons/basketball.png">
+                </a></li>
+        </ul>
+    </div> -->
+    <footer class="main-footer">
+        <div class="logo"></div>
+        <p class="copy-right"> This app created by Eilon Shetrit ©</p>
+    </footer>
+    <div class="canvas-container" style="display:none;">
+        <form>
+            Text here: <input oninput="onChangeTxt(this.value)" type="text" id="meme-txt" name="meme-txt">
+        </form>
+        <canvas id="my-canvas" height="450" width="450"></canvas>
+    </div>
+    
+    <script src="js/memeService.js"></script>
+    <script src="js/memeController.js"></script>
+</body>
+</html>
