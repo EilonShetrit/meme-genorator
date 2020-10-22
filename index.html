@@ -9,23 +9,24 @@
 </head>
 
 <body onload="onInit()">
-    <header class="main-header">
-        <div class="header-content">
-            <div class="logo"></div>
-            <div class="nav-btn">
-                <a href="">Gallery</a>
-                <a href="">About</a>
-            </div>
+    <header class="main-header flex">
+        <div class="logo">
+            <img src="./icons/LOGO.png">
+        </div>
+        <div class="nav-btn">
+            <a href="#gallery">Gallery</a>
+            <a href="#about">About</a>
         </div>
     </header>
-    <div class="gallery-container grid"></div>
+    <div class="gallery-container grid" id="gallery"></div>
     <div class="about flex" id="about">
         <div class="team-member">
-            <img class="my-pic"  src="./my-img/me.PNG">
+            <img class="my-pic" src="./my-img/me.PNG">
         </div>
         <div class="details">
             <h4>Eilon Shetrit</h4>
-            <p class="about-me">Lead Marketer</p>
+            <p class="about-me">Hi, my name is Eilon Shetrit, I'm 23 years old lives in Ashqelon, Israel.<br>Just
+                finished Full-stack programming and ready to build your cool and uniqe app/site.</p>
             <ul class="social-media flex clean-list">
                 <li class="icon-facebook">
                     <a href="https://www.facebook.com/eilon.shitrit.5/" target="_blank">
@@ -33,7 +34,7 @@
                     </a>
                 </li>
                 <li class="icon-linkedin">
-                    <a href="#about">
+                    <a href="">
                         <img src="./icons/linkedin-logo.png">
                     </a>
                 </li>
@@ -49,42 +50,61 @@
         <div class="canvas-container">
             <canvas id="my-canvas" height="450" width="450"></canvas>
         </div>
-        <section class="editor-meme">
-            Text here: <input oninput="onChangeTxt(this.value)" type="text" id="meme-txt" name="meme-txt">
-            <button class="increase-font" onclick="onIncreaseFont()">
-                <img src="./icons/increase font - icon.png"></button>
-            <button class="decrease-font" onclick="onDecreaseFont()">
-                <img src="./icons/decrease font - icon.png"></button>
-            <button class="move-txt" onclick="onMoveTxtUp()">Up</button>
-            <button class="move-txt" onclick="onMoveTxtDown()">Down</button>
+        <section class="editor-meme grid">
+            <input class="input-txt" oninput="onChangeTxt(this.value)" type="text" id="meme-txt" name="meme-txt">
+            <button class="move-txtUp" onclick="onMoveTxtUp()">Up</button>
+            <button class="move-txtDown" onclick="onMoveTxtDown()">Down</button>
             <button class="switch-line" onclick="onSwitchLine()">
-            <img src="./icons/up-and-down-opposite-double-arrows-side-by-side.png"></button>
-            <button class="switch-line" onclick="">
-            <img src="./icons/align-to-left.png"></button>
-            <button class="switch-line" onclick="">
-            <img src="./icons/center-text-alignment.png"></button>
-            <button class="switch-line" onclick="">
-                <img src="./icons/align-to-right.png"></button>
-            <button class="switch-line" onclick="">
-                <img src="./icons/paint-board-and-brush.png"></button>
-            <button class="switch-line" onclick="">
-                <img src="./icons/trash.png"></button>
-            <button class="switch-line" onclick="">
-                <img src="./icons/add.png"></button>
-            <button class="switch-line" onclick="">
-                <img src="./icons/text stroke.png"></button>
-            <button class="switch-line" onclick="">Share</button>
-            <button class="switch-line" onclick="">Download</button>
-            <select name="font-family" id="font-family">
-                <option value="volvo">Impact</option>
-                <option value="saab">Ariel</option>
-                <option value="opel">Monospace</option>
-                <!-- <option value="audi">AmongUs</option> -->
+                <img src="./icons/up-and-down-opposite-double-arrows-side-by-side.png">
+            </button>
+            <button class="add-line" onclick="onAddLine()">
+                <img src="./icons/add.png">
+            </button>
+            <button class="trash" onclick="onDeleteLine()">
+                <img src="./icons/trash.png">
+            </button>
+            <button class="increase-font" onclick="onIncreaseFont()">
+                <img src="./icons/increase font - icon.png">
+            </button>
+            <button class="decrease-font" onclick="onDecreaseFont()">
+                <img src="./icons/decrease font - icon.png">
+            </button>
+            <button class="align-left" onclick="onAlignLeft()">
+                <img src="./icons/align-to-left.png">
+            </button>
+            <button class="align-center" onclick="onAlignCenter()">
+                <img src="./icons/center-text-alignment.png">
+            </button>
+            <button class="align-right" onclick="onAlignRight()">
+                <img src="./icons/align-to-right.png">
+            </button>
+            <select name="font-family" id="font-family" onchange="switchFontFamily(this.value)">
+                <option value="Impact">Impact</option>
+                <option value="Ariel">Ariel</option>
+                <option value="Monospace">Monospace</option>
+                <option value="amongUs">amongUs</option>
             </select>
+            <div class="btn-stroke-color">
+                <button type="button" class="stroke">
+                    <img src="./icons/text stroke.png">
+                    <input type="color" class="stroke-color" onchange="changeStrokeColor(this.value)"></input>
+                </button>
+            </div>
+            <div class="btn-fill-color">
+                <button type="button" class="fill">
+                    <img src="./icons/paint-board-and-brush.png">
+                    <input type="color" class="fill-color" onchange="changeFillColor(this.value)"></input>
+                </button>
+            </div>
+            <button class="download">
+                <a href="#" class="btn" onclick="downloadMeme(this)" download="my-img.jpg">Download</a></button>
+            <button class="share" onclick="shareMeme()">Share</button>
         </section>
     </div>
-    <footer class="main-footer align">
-        <div class="logo"></div>
+    <footer class="main-footer flex">
+        <div class="logo">
+            <img src="./icons/LOGO.png">
+        </div>
         <p class="copy-right"> This app created by Eilon Shetrit ©</p>
     </footer>
     <script src="js/memeService.js"></script>

@@ -82,8 +82,9 @@ var gMeme = {
         size: 30,
         align: 'center',
         color: 'white',
+        stroke: 'black',
         font: 'Impact',
-        x: 120,
+        x: 220,
         y: 50
     },
     {
@@ -91,8 +92,9 @@ var gMeme = {
         size: 30,
         align: 'center',
         color: 'white',
+        stroke: 'black',
         font: 'Impact',
-        x: 120,
+        x: 220,
         y: 420
     }]
 }
@@ -114,6 +116,30 @@ gMeme.lines[gMeme.selectedLineIdx].y--;
 }
 function moveTxtDown(){
 gMeme.lines[gMeme.selectedLineIdx].y++;
+}
+function addLine(line){
+gMeme.lines.push(line);
+}
+function deleteLine(idx){
+    gMeme.lines.splice(idx, 1);
+}
+function alignLeft(){
+    gMeme.lines[gMeme.selectedLineIdx].align = 'left';
+}
+function alignCenter(){
+    gMeme.lines[gMeme.selectedLineIdx].align = 'center';
+}
+function alignRight(){
+    gMeme.lines[gMeme.selectedLineIdx].align = 'right';
+}
+function updateFontFamily(fontFamily){
+    gMeme.lines[gMeme.selectedLineIdx].font = fontFamily; 
+}
+function updateTxtFillColor(fillColor){
+    gMeme.lines[gMeme.selectedLineIdx].color = fillColor; 
+}
+function updateTxtStrokeColor(strokeColor){
+    gMeme.lines[gMeme.selectedLineIdx].stroke = strokeColor; 
 }
 function selectImg(imgId) {
     gMeme.selectedImgId = imgId;

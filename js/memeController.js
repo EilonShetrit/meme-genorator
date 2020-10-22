@@ -40,6 +40,9 @@ function onChangeTxt(value) {
 }
 function renderLine(line) {
     gCtx.font = `${line.size}px  ${line.font}`;
+    gCtx.textAlign = `${line.align}`;
+    gCtx.strokeStyle =`${line.stroke}`;
+    gCtx.strokeText(line.txt, line.x, line.y);
     gCtx.fillStyle = `${line.color}`;
     gCtx.fillText(line.txt, line.x, line.y);
 }
@@ -63,17 +66,64 @@ function onSwitchLine(){
 setCurrLineIdx(); 
 renderCanvas()
 }
+function onAddLine(){
+    const line = {
+        txt: 'write your text here',
+        size: 30,
+        align: 'center',
+        color: 'white',
+        font: 'Impact',
+        x: 120,
+        y: 220
+    }
+    addLine(line)
+    renderCanvas();
+}
+function onDeleteLine(){
+    const meme = getMeme()
+    deleteLine(meme.selectedLineIdx);
+    renderCanvas();
+}
+function onAlignLeft(){ //fix
+    alignLeft();
+    renderCanvas(); 
+}
+function onAlignCenter(){ //fix
+    alignCenter();
+    renderCanvas();
+}
+function onAlignRight(){ //fix
+    alignRight();
+    renderCanvas();
+}
+function switchFontFamily(value){//fix
+    updateFontFamily(value)
+    renderCanvas();
+}
+function changeStrokeColor(value){//fix
+    updateTxtStrokeColor(value)
+    renderCanvas();
+}
+function changeFillColor(value){ //fix
+    updateTxtFillColor(value);
+    renderCanvas();
+}
+function downloadMeme(elLink){
+    var imgContent = gCanvas.toDataURL('image/jpeg');
+    elLink.href = imgContent;
 
+}
+function shareMeme(){
+//TODO
+}
 function renderLines(){
     const meme = getMeme();
     const selectedLineIdx = meme.selectedLineIdx
-    console.log(selectedLineIdx);
     meme.lines.forEach((line,idx) =>{
      if(selectedLineIdx === idx) renderRect(line.x - 10 , line.y - 25) // fix the render rect
     renderLine(line)
     })
 }
-
 function renderRect(x,y){
 const meme = getMeme()
 gCtx.beginPath()
