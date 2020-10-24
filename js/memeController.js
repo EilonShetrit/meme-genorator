@@ -15,23 +15,21 @@ function renderImgs() {
     })
     document.querySelector('.gallery-container').innerHTML = strHtml.join('');
 }
-
 function renderCanvas() {
     const meme = getMeme();
     var urlImg = getImgUrlById(meme.selectedImgId);
     var img = new Image();
     img.src = urlImg;
     img.onload = () => {
-    gCtx.drawImage(img, 0, 0, gCanvas.width, gCanvas.height); 
-    renderLines();
+        gCtx.drawImage(img, 0, 0, gCanvas.width, gCanvas.height);
+        renderLines();
     }
 }
-
 function onSelectImg(imgId) {
     selectImg(imgId);
     document.querySelector('.gallery-container').classList.toggle('hide');
     document.querySelector('.about').classList.toggle('hide');
-    document.querySelector('.nav-btn').classList.toggle('hide');
+    document.querySelector('.search-container').classList.toggle('hide');
     document.querySelector('.editor-container').classList.toggle('hide');
     renderCanvas();
 }
@@ -42,99 +40,96 @@ function onChangeTxt(value) {
 function renderLine(line) {
     gCtx.textAlign = `${line.align}`;
     gCtx.font = `${line.size}px  ${line.font}`;
-    gCtx.strokeStyle =`${line.stroke}`;
+    gCtx.strokeStyle = `${line.stroke}`;
     gCtx.strokeText(line.txt, line.x, line.y);
     gCtx.fillStyle = `${line.color}`;
     gCtx.fillText(line.txt, line.x, line.y);
 }
-function onIncreaseFont(){
-increaseFont();
-renderCanvas();
+function onIncreaseFont() {
+    increaseFont();
+    renderCanvas();
 }
-function onDecreaseFont(){
-decreaseFont();
-renderCanvas();
+function onDecreaseFont() {
+    decreaseFont();
+    renderCanvas();
 }
-function onMoveTxtUp(){
-moveTxtUp();
-renderCanvas();
+function onMoveTxtUp() {
+    moveTxtUp();
+    renderCanvas();
 }
-function onMoveTxtDown(){
-moveTxtDown();
-renderCanvas()
+function onMoveTxtDown() {
+    moveTxtDown();
+    renderCanvas()
 }
-function onSwitchLine(){
-setCurrLineIdx(); 
-renderCanvas()
+function onSwitchLine() {
+    setCurrLineIdx();
+    renderCanvas()
 }
-function onAddLine(){
+function onAddLine() {
     const line = {
         txt: 'write your text here',
         size: 30,
         align: 'center',
         color: 'white',
+        stroke: 'black',
         font: 'Impact',
-        x: 120,
+        x: 240,
         y: 220
     }
     addLine(line)
     renderCanvas();
 }
-function onDeleteLine(){
+function onDeleteLine() {
     const meme = getMeme()
     deleteLine(meme.selectedLineIdx);
     renderCanvas();
 }
-function onAlignLeft(){ 
+function onAlignLeft() {
     alignLeft();
-    renderCanvas(); 
+    renderCanvas();
 }
-function onAlignCenter(){
+function onAlignCenter() {
     alignCenter();
     renderCanvas();
 }
-function onAlignRight(){
+function onAlignRight() {
     alignRight();
     renderCanvas();
 }
-function switchFontFamily(value){
+function switchFontFamily(value) {
     updateFontFamily(value)
     renderCanvas();
 }
-function changeStrokeColor(value){
+function changeStrokeColor(value) {
     updateTxtStrokeColor(value)
     renderCanvas();
 }
-function changeFillColor(value){
+function changeFillColor(value) {
     updateTxtFillColor(value);
     renderCanvas();
 }
-function downloadMeme(elLink){
+function downloadMeme(elLink) {
     var imgContent = gCanvas.toDataURL('image/jpeg');
     elLink.href = imgContent;
 
 }
-function shareMeme(){
-//TODO
+function shareMeme() {
+    //TODO
+
 }
-function renderLines(){
+function renderLines() {
     const meme = getMeme();
     const selectedLineIdx = meme.selectedLineIdx
-    meme.lines.forEach((line,idx) =>{
-     if(selectedLineIdx === idx) renderRect(line.x -100 , line.y) // fix the render rect
-    renderLine(line)
+    meme.lines.forEach((line, idx) => {
+        if (selectedLineIdx === idx) renderRect(line.x - 120, line.y - 25) // fix the render rect
+        renderLine(line)
     })
 }
-function renderRect(x,y){
-const meme = getMeme()
-gCtx.beginPath()
-gCtx.rect(x , y , x*2 , meme.lines[meme.selectedLineIdx].size)
-gCtx.strokeStyle = 'red'
-gCtx.stroke()
+function renderRect(x, y) {
+    const meme = getMeme()
+    gCtx.beginPath()
+    gCtx.rect(x, y, x * 2 , meme.lines[meme.selectedLineIdx].size)
+    gCtx.strokeStyle = 'red'
+    gCtx.stroke()
 }
 
-
-function toggleMenu() {
-    var mainMenu = document.getElementById('mainMenu');
-    mainMenu.classList.toggle('open');
-}

@@ -12,7 +12,7 @@
     <header>
         <section class="main-header flex">
             <div class="logo"><a href="index.html">memegen</a></div>
-            <nav id="mainMenu" class="nav flex">
+            <nav class="nav flex" id="mainMenu">
                 <ul class="nav-btn clean-list flex">
                     <li>
                         <a href="#gallery">Gallery</a>
@@ -21,12 +21,23 @@
                         <a href="#about">About</a>
                     </li>
                 </ul>
-                <button class="toggle-menu-btn" onclick="toggleMenu()">
-                    <img src="./icons/hamburger.png" alt="">
-                </button>
             </nav>
         </section>
     </header>
+    <section class="search-container flex space-between wrap">
+        <input type="search" id="search-meme" name="search-meme" placeholder="enter search keyword &#8981;">
+        <ul class="keyowrds-populer clean-list flex wrap">
+            <li>funny</li>
+            <li>comics</li>
+            <li>comics</li>
+            <li>comics</li>
+            <li>comics</li>
+            <li>comics</li>
+            <li>comics</li>
+            <li>comics</li>
+            <li class="more-keywords">more...</li>
+        </ul>
+    </section>
     <div class="gallery-container grid" id="gallery"></div>
     <div class="about flex" id="about">
         <div class="team-member">
@@ -101,9 +112,11 @@
                 <label for="fill-color"><img src="./icons/paint-board-and-brush.png"></label>
                 <input type="color" id="fill-color" class="fill-color" onchange="changeFillColor(this.value)"></input>
             </button>
-            <button class="download">
-                <a href="#" class="btn" onclick="downloadMeme(this)" download="my-img.jpg">
-                    <img src="/icons/download-2-32.png"></a></button>
+            <button type="button" onclick="downloadMeme(this)" class="download">
+                <a href="#" class="btn" download="my-img.jpg">
+                    <img src="/icons/download-2-32.png">
+                </a>
+            </button>
             <button class="share" onclick="shareMeme()">Share</button>
         </section>
     </div>
@@ -112,6 +125,7 @@
         <p class="copy-right"> This app created by Eilon Shetrit ©</p>
     </footer>
 
+    <script src="js/storageService.js"></script>
     <script src="js/memeService.js"></script>
     <script src="js/memeController.js"></script>
 </body>
