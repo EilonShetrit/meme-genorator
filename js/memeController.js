@@ -31,6 +31,7 @@ function onSelectImg(imgId) {
     selectImg(imgId);
     document.querySelector('.gallery-container').classList.toggle('hide');
     document.querySelector('.about').classList.toggle('hide');
+    document.querySelector('.nav-btn').classList.toggle('hide');
     document.querySelector('.editor-container').classList.toggle('hide');
     renderCanvas();
 }
@@ -39,8 +40,8 @@ function onChangeTxt(value) {
     renderCanvas();
 }
 function renderLine(line) {
-    gCtx.font = `${line.size}px  ${line.font}`;
     gCtx.textAlign = `${line.align}`;
+    gCtx.font = `${line.size}px  ${line.font}`;
     gCtx.strokeStyle =`${line.stroke}`;
     gCtx.strokeText(line.txt, line.x, line.y);
     gCtx.fillStyle = `${line.color}`;
@@ -84,27 +85,27 @@ function onDeleteLine(){
     deleteLine(meme.selectedLineIdx);
     renderCanvas();
 }
-function onAlignLeft(){ //fix
+function onAlignLeft(){ 
     alignLeft();
     renderCanvas(); 
 }
-function onAlignCenter(){ //fix
+function onAlignCenter(){
     alignCenter();
     renderCanvas();
 }
-function onAlignRight(){ //fix
+function onAlignRight(){
     alignRight();
     renderCanvas();
 }
-function switchFontFamily(value){//fix
+function switchFontFamily(value){
     updateFontFamily(value)
     renderCanvas();
 }
-function changeStrokeColor(value){//fix
+function changeStrokeColor(value){
     updateTxtStrokeColor(value)
     renderCanvas();
 }
-function changeFillColor(value){ //fix
+function changeFillColor(value){
     updateTxtFillColor(value);
     renderCanvas();
 }
@@ -120,7 +121,7 @@ function renderLines(){
     const meme = getMeme();
     const selectedLineIdx = meme.selectedLineIdx
     meme.lines.forEach((line,idx) =>{
-     if(selectedLineIdx === idx) renderRect(line.x - 10 , line.y - 25) // fix the render rect
+     if(selectedLineIdx === idx) renderRect(line.x -100 , line.y) // fix the render rect
     renderLine(line)
     })
 }
@@ -128,6 +129,12 @@ function renderRect(x,y){
 const meme = getMeme()
 gCtx.beginPath()
 gCtx.rect(x , y , x*2 , meme.lines[meme.selectedLineIdx].size)
-gCtx.strokeStyle = 'black'
+gCtx.strokeStyle = 'red'
 gCtx.stroke()
+}
+
+
+function toggleMenu() {
+    var mainMenu = document.getElementById('mainMenu');
+    mainMenu.classList.toggle('open');
 }

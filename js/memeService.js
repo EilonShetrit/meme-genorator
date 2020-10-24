@@ -84,7 +84,7 @@ var gMeme = {
         color: 'white',
         stroke: 'black',
         font: 'Impact',
-        x: 220,
+        x: 240,
         y: 50
     },
     {
@@ -94,8 +94,8 @@ var gMeme = {
         color: 'white',
         stroke: 'black',
         font: 'Impact',
-        x: 220,
-        y: 420
+        x: 240,
+        y: 430
     }]
 }
 
@@ -124,13 +124,13 @@ function deleteLine(idx){
     gMeme.lines.splice(idx, 1);
 }
 function alignLeft(){
-    gMeme.lines[gMeme.selectedLineIdx].align = 'left';
+    gMeme.lines[gMeme.selectedLineIdx].align = 'right';
 }
 function alignCenter(){
     gMeme.lines[gMeme.selectedLineIdx].align = 'center';
 }
 function alignRight(){
-    gMeme.lines[gMeme.selectedLineIdx].align = 'right';
+    gMeme.lines[gMeme.selectedLineIdx].align = 'left';
 }
 function updateFontFamily(fontFamily){
     gMeme.lines[gMeme.selectedLineIdx].font = fontFamily; 

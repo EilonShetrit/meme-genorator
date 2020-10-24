@@ -9,14 +9,23 @@
 </head>
 
 <body onload="onInit()">
-    <header class="main-header flex">
-        <div class="logo">
-            <img src="./icons/LOGO.png">
-        </div>
-        <div class="nav-btn">
-            <a href="#gallery">Gallery</a>
-            <a href="#about">About</a>
-        </div>
+    <header>
+        <section class="main-header flex">
+            <div class="logo"><a href="index.html">memegen</a></div>
+            <nav id="mainMenu" class="nav flex">
+                <ul class="nav-btn clean-list flex">
+                    <li>
+                        <a href="#gallery">Gallery</a>
+                    </li>
+                    <li>
+                        <a href="#about">About</a>
+                    </li>
+                </ul>
+                <button class="toggle-menu-btn" onclick="toggleMenu()">
+                    <img src="./icons/hamburger.png" alt="">
+                </button>
+            </nav>
+        </section>
     </header>
     <div class="gallery-container grid" id="gallery"></div>
     <div class="about flex" id="about">
@@ -47,13 +56,13 @@
         </div>
     </div>
     <div class="editor-container flex hide">
-        <div class="canvas-container">
-            <canvas id="my-canvas" height="450" width="450"></canvas>
-        </div>
+        <canvas id="my-canvas" height="450" width="450"></canvas>
         <section class="editor-meme grid">
             <input class="input-txt" oninput="onChangeTxt(this.value)" type="text" id="meme-txt" name="meme-txt">
-            <button class="move-txtUp" onclick="onMoveTxtUp()">Up</button>
-            <button class="move-txtDown" onclick="onMoveTxtDown()">Down</button>
+            <button class="move-txtUp" onclick="onMoveTxtUp()">
+                <img src="./icons/up-arrow.png"></button>
+            <button class="move-txtDown" onclick="onMoveTxtDown()">
+                <img src="./icons/down-arrow.png"></button>
             <button class="switch-line" onclick="onSwitchLine()">
                 <img src="./icons/up-and-down-opposite-double-arrows-side-by-side.png">
             </button>
@@ -78,35 +87,31 @@
             <button class="align-right" onclick="onAlignRight()">
                 <img src="./icons/align-to-right.png">
             </button>
-            <select name="font-family" id="font-family" onchange="switchFontFamily(this.value)">
+            <select class="font-family" name="font-family" id="font-family" onchange="switchFontFamily(this.value)">
                 <option value="Impact">Impact</option>
                 <option value="Ariel">Ariel</option>
                 <option value="Monospace">Monospace</option>
                 <option value="amongUs">amongUs</option>
             </select>
-            <div class="btn-stroke-color">
-                <button type="button" class="stroke">
-                    <img src="./icons/text stroke.png">
-                    <input type="color" class="stroke-color" onchange="changeStrokeColor(this.value)"></input>
-                </button>
-            </div>
-            <div class="btn-fill-color">
-                <button type="button" class="fill">
-                    <img src="./icons/paint-board-and-brush.png">
-                    <input type="color" class="fill-color" onchange="changeFillColor(this.value)"></input>
-                </button>
-            </div>
+            <button type="button" class="stroke">
+                <label for="stroke"><img src="./icons/text stroke.png"></label>
+                <input type="color" id="stroke" class="stroke-color" onchange="changeStrokeColor(this.value)"></input>
+            </button>
+            <button type="button" class="fill">
+                <label for="fill-color"><img src="./icons/paint-board-and-brush.png"></label>
+                <input type="color" id="fill-color" class="fill-color" onchange="changeFillColor(this.value)"></input>
+            </button>
             <button class="download">
-                <a href="#" class="btn" onclick="downloadMeme(this)" download="my-img.jpg">Download</a></button>
+                <a href="#" class="btn" onclick="downloadMeme(this)" download="my-img.jpg">
+                    <img src="/icons/download-2-32.png"></a></button>
             <button class="share" onclick="shareMeme()">Share</button>
         </section>
     </div>
     <footer class="main-footer flex">
-        <div class="logo">
-            <img src="./icons/LOGO.png">
-        </div>
+        <div class="logo">memegen</div>
         <p class="copy-right"> This app created by Eilon Shetrit ©</p>
     </footer>
+
     <script src="js/memeService.js"></script>
     <script src="js/memeController.js"></script>
 </body>
