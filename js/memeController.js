@@ -31,6 +31,7 @@ function onSelectImg(imgId) {
     document.querySelector('.about').classList.toggle('hide');
     document.querySelector('.search-container').classList.toggle('hide');
     document.querySelector('.editor-container').classList.toggle('hide');
+    document.querySelector('.nav').classList.toggle('hide');
     renderCanvas();
 }
 function onChangeTxt(value) {
@@ -38,8 +39,8 @@ function onChangeTxt(value) {
     renderCanvas();
 }
 function renderLine(line) {
-    gCtx.textAlign = `${line.align}`;
     gCtx.font = `${line.size}px  ${line.font}`;
+    gCtx.textAlign = `${line.align}`;
     gCtx.strokeStyle = `${line.stroke}`;
     gCtx.strokeText(line.txt, line.x, line.y);
     gCtx.fillStyle = `${line.color}`;
@@ -109,27 +110,33 @@ function changeFillColor(value) {
     renderCanvas();
 }
 function downloadMeme(elLink) {
-    var imgContent = gCanvas.toDataURL('image/jpeg');
+    changeFocus();
+    renderCanvas();
+    const imgContent = gCanvas.toDataURL('image/jpeg');
     elLink.href = imgContent;
 
 }
-function shareMeme() {
-    //TODO
-
+function onNavMenu() {
+    const elNav = document.querySelector('.main-header .nav-btn');
+    const elHamburger = document.querySelector('.main-header .hamburger-nav');
+    elNav.classList.toggle('nav-bar-modal');
+    elHamburger.classList.toggle('hamburger-logo-trans');
 }
 function renderLines() {
     const meme = getMeme();
     const selectedLineIdx = meme.selectedLineIdx
     meme.lines.forEach((line, idx) => {
-        if (selectedLineIdx === idx) renderRect(line.x - 120, line.y - 25) // fix the render rect
+        if (selectedLineIdx === idx)  renderRect(5, (line.y+5) - line.size);
         renderLine(line)
     })
 }
 function renderRect(x, y) {
     const meme = getMeme()
+    const txtHeight = meme.lines[meme.selectedLineIdx].size
     gCtx.beginPath()
-    gCtx.rect(x, y, x * 2 , meme.lines[meme.selectedLineIdx].size)
-    gCtx.strokeStyle = 'red'
+    gCtx.rect(x , y , gCanvas.width - 10, txtHeight)
+    gCtx.strokeStyle = 'black'
     gCtx.stroke()
+    gCtx.fillStyle = 'lightgray'
+    gCtx.fillRect(x, y, gCanvas.width - 10, txtHeight)
 }
-

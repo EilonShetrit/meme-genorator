@@ -108,7 +108,7 @@ var gMeme = {
         color: 'white',
         stroke: 'black',
         font: 'Impact',
-        x: 240,
+        x: 250,
         y: 50
     },
     {
@@ -118,8 +118,8 @@ var gMeme = {
         color: 'white',
         stroke: 'black',
         font: 'Impact',
-        x: 240,
-        y: 430
+        x: 250,
+        y: 470
     }]
 }
 
@@ -130,10 +130,12 @@ function changeTxt(txt) {
     gMeme.lines[gMeme.selectedLineIdx].txt = txt;
 }
 function increaseFont() {
-    gMeme.lines[gMeme.selectedLineIdx].size++;
+    if(gMeme.lines[gMeme.selectedLineIdx].size === 60) return;
+    else gMeme.lines[gMeme.selectedLineIdx].size++;
 }
 function decreaseFont() {
-    gMeme.lines[gMeme.selectedLineIdx].size--;
+    if(gMeme.lines[gMeme.selectedLineIdx].size === 16) return;
+    else gMeme.lines[gMeme.selectedLineIdx].size--;
 }
 function moveTxtUp() {
     gMeme.lines[gMeme.selectedLineIdx].y--;
@@ -148,13 +150,16 @@ function deleteLine(idx) {
     gMeme.lines.splice(idx, 1);
 }
 function alignLeft() {
-    gMeme.lines[gMeme.selectedLineIdx].align = 'right';
+    gMeme.lines[gMeme.selectedLineIdx].align = 'left';
+    gMeme.lines[gMeme.selectedLineIdx].x = 10; 
 }
 function alignCenter() {
     gMeme.lines[gMeme.selectedLineIdx].align = 'center';
+    gMeme.lines[gMeme.selectedLineIdx].x = gCanvas.width / 2; 
 }
 function alignRight() {
-    gMeme.lines[gMeme.selectedLineIdx].align = 'left';
+    gMeme.lines[gMeme.selectedLineIdx].align = 'right';
+    gMeme.lines[gMeme.selectedLineIdx].x = gCanvas.width - 10; 
 }
 function updateFontFamily(fontFamily) {
     gMeme.lines[gMeme.selectedLineIdx].font = fontFamily;
@@ -177,4 +182,7 @@ function getImgUrlById(imgId) {
 }
 function getImgs() {
     return gImgs
+}
+function changeFocus(){
+    gMeme.selectedLineIdx = -1; 
 }
